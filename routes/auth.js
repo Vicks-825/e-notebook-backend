@@ -18,7 +18,7 @@ router.post('/createuser', [
     //if there are error, return bad request
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({success, errors: errors.array(), mess: "hiii" });
+      return res.status(400).json({success, errors: errors.array()});
     }
 
     //check whether email already exist
@@ -48,7 +48,7 @@ router.post('/createuser', [
         res.json({success, authToken});
     }
     catch(err){
-        res.json({success, message: err.message, mess: "hello"});
+        res.json({success, message: err.message});
         res.status(500).send("Internal server error occured");
     }
 })
