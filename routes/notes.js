@@ -25,10 +25,10 @@ router.post('/addnote',fetchuser, [
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const {title, description, tag} = req.body;
+    const {title, description, details} = req.body;
     try {
         const note = new Notes({
-            title, description, tag, user: req.user.id
+            title, description, details, user: req.user.id
         })
         const savedNotes = await note.save();
         res.json(savedNotes);
@@ -40,7 +40,7 @@ router.post('/addnote',fetchuser, [
 
 //Route 3:  update an existing note: PUT "/api/notes/updatenote"  Login required
 router.put('/updatenote/:id', fetchuser, async(req, res) => {
-    const {title, description, tag} = req.body;
+    const {title, description, details} = req.body;
 
     try {
         //create a newNote object
@@ -51,8 +51,8 @@ router.put('/updatenote/:id', fetchuser, async(req, res) => {
         if(description){
             newNote.description = description;
         }
-        if(tag){
-            newNote.tag = tag;
+        if(details){
+            newNote.details = details;
         }
 
         //find the note to be updated and update it
