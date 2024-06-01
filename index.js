@@ -10,9 +10,9 @@ app.use(cors())
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello Vicky you are really great!')
-})
+// app.get('/', (req, res) => {
+//   res.send('Hello Dolly you are really great!')
+// })
 
 //Available routes
 app.use('/api/auth/', require('./routes/auth'));
